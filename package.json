@@ -1,0 +1,28 @@
+{
+    "author": "cealpha",
+    "dependencies": {},
+    "keywords": [],
+    "name": "simple",
+    "pebble": {
+        "capabilities": [
+            "configurable"
+        ],
+        "displayName": "Simple",
+        "enableMultiJS": true,
+        "messageKeys": [],
+        "projectType": "rocky",
+        "resources": {
+            "media": []
+        },
+        "sdkVersion": "3",
+        "targetPlatforms": [
+            "basalt",
+            "chalk"
+        ],
+        "uuid": "02f66631-0812-42b5-9847-4eff95250137",
+        "watchapp": {
+            "watchface": true
+        }
+    },
+    "version": "1.0.0"
+}
