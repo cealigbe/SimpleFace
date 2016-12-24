@@ -1,5 +1,7 @@
 var rocky = require('rocky');
 
+var settings = null;
+
 function fractorad(fraction) {
 	return fraction * 2 * Math.PI;
 }
@@ -63,12 +65,25 @@ rocky.on('draw', function(event) {
 	
 	var maxLength = (Math.min(w, h) - 50) / 2;
 	
-	// Draw ticks
-	ctx.fillStyle = "dimgray";
-	ctx.rockyFillRadial(cx, cy-70, 0, 3, 0, 2 * Math.PI);
+	var hourColor = "red";
+	var minColor = "white";
+	var dateColor = "lightsalmon";
+	var topMark = true;
+	
+	if (settings) {
+		hourColor = cssColor(settings.HourHandColor);
+		minColor = cssColor(settings.MinHandColor);
+		dateColor = cssColor(settings.DateColor);
+		topMark = settings.TopMark;
+	}
+	
+	if (topMark) {
+		ctx.fillStyle = "dimgray";
+		ctx.rockyFillRadial(cx, cy-70, 0, 3, 0, 2 * Math.PI);
+	}
 	
 	// Draw day
-	ctx.fillStyle = 'lightsalmon';
+	ctx.fillStyle = dateColor;
 	ctx.font = '20px bold Leco-numbers';
 	ctx.fillText(d.getDate(), cx + 50, cy-13, w/2);
 	
@@ -76,15 +91,20 @@ rocky.on('draw', function(event) {
 	var minFrac = (d.getMinutes()) / 60;
 	var minAngle = fractorad(minFrac);
 	
-	drawHand(ctx, cx, cy, minAngle, maxLength, "white", 2);
+	drawHand(ctx, cx, cy, minAngle, maxLength, minColor, 2);
 	
 	var hourFrac = (d.getHours() % 12 + minFrac) / 12;
 	var hourAngle = fractorad(hourFrac);
 	
-	drawHand(ctx, cx, cy, hourAngle, maxLength * 0.6, "red", 3);
+	drawHand(ctx, cx, cy, hourAngle, maxLength * 0.6, hourColor, 3);
 	
-	ctx.fillStyle = "white";
+	ctx.fillStyle = minColor;
 	ctx.rockyFillRadial(cx, cy, 0, 3, 0, 2 * Math.PI);
+});
+
+rocky.on('message', function(event) {
+	settings = event.data;
+	rocky.requestDraw();
 });
 
 rocky.on('minutechange', function(event) {
@@ -94,6 +114,43 @@ rocky.on('minutechange', function(event) {
 	// Redraw screen
 	rocky.requestDraw();
 });
+
+rocky.postMessage({command: 'settings'});
+
+
+// Borrowed from Clay.js
+
+
+/**
+ * @param {string|boolean|number} color
+ * @returns {string}
+ */
+
+function cssColor(color) {
+	if (typeof color === 'number') {
+		color = color.toString(16);
+	} else if (!color) {
+		return 'transparent';
+	}
+	
+	color = padColorString(color);
+	
+	return '#' + color;
+}
+
+/**
+ * @param {string} color
+ * @return {string}
+ */
+function padColorString(color) {
+	color = color.toLowerCase();
+
+	while (color.length < 6) {
+		color = '0' + color;
+	}
+
+	return color;
+}
 
 
 

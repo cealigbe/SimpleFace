@@ -25,3 +25,17 @@ Pebble.addEventListener('webviewclosed', function(e) {
 	
 	Pebble.postMessage(settingsFlat);
 });
+
+Pebble.on('message', function(event) {
+	if (event.data.command === 'settings') {
+		restoreSettings();
+	}
+});
+
+function restoreSettings() {
+	// Restore settings from localStorage
+	var settings = JSON.parse(localStorage.getItem('clay-settings'));
+	if (settings) {
+		Pebble.postMessage(settings);
+	}
+}

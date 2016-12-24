@@ -18,7 +18,7 @@ module.exports = [
 				"type": "color",
 				"messageKey": "HourHandColor",
 				"defaultValue": "0xFF0000",
-				"label": "Background Color"
+				"label": "Hour Hand Color"
 			},
 			{
 				"type": "color",
