@@ -4,6 +4,9 @@
     "keywords": [],
     "name": "simple2",
     "pebble": {
+        "capabilities": [
+            "configurable"
+        ],
         "displayName": "Simple II",
         "enableMultiJS": true,
         "messageKeys": [],
