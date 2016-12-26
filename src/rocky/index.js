@@ -74,7 +74,6 @@ rocky.on('draw', function(event) {
 		hourColor = cssColor(settings.HourHandColor);
 		minColor = cssColor(settings.MinHandColor);
 		dateColor = cssColor(settings.DateColor);
-		topMark = settings.TopMark;
 	}
 	
 	if (topMark) {

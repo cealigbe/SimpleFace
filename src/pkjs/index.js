@@ -1,9 +1,7 @@
-var Clay = require('./clay');
-var clayConfig = require('./config');
-var clay = new Clay(clayConfig, null, { autoHandleEvents: false });
-
 Pebble.addEventListener('showConfiguration', function(e) {
-	Pebble.openURL(clay.generateUrl());
+	var url = 'https://cealigbe.github.io/SimpleFace/'
+	
+	Pebble.openURL(url);
 });
 
 Pebble.addEventListener('webviewclosed', function(e) {
@@ -12,7 +10,7 @@ Pebble.addEventListener('webviewclosed', function(e) {
 	}
 	
 	// Return settings from config
-	var settings = clay.getSettings(e.response, false);
+	var settings = JSON.parse(decodeURIComponent(e.response));
 	
 	var settingsFlat = {};
 	Object.keys(settings).forEach(function(key) {
@@ -34,7 +32,7 @@ Pebble.on('message', function(event) {
 
 function restoreSettings() {
 	// Restore settings from localStorage
-	var settings = JSON.parse(localStorage.getItem('clay-settings'));
+	var settings = JSON.parse(localStorage.getItem('settings'));
 	if (settings) {
 		Pebble.postMessage(settings);
 	}
