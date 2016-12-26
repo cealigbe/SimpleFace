@@ -21,7 +21,7 @@ var white = {
 var styles = [color, gray, white];
 
 submitButton.addEventListener('click', function() {
-	var radios = document.getElementByName('styling');
+	var radios = document.getElementsByName('styling');
 	var ind;
 
 	for (var i = 0; i < radios.length; i++) {
