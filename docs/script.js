@@ -33,7 +33,7 @@ submitButton.addEventListener('click', function() {
 
 	var style = styles[ind];
 
-	function getQueryParam(variable, default) {
+	function getQueryParam(variable, defaultValue) {
 		var query = location.search.substring(1);
 		var vars = query.split('&');
 		for (var i = 0; i < vars.length; i++) {
@@ -42,7 +42,7 @@ submitButton.addEventListener('click', function() {
 				return decodeURIComponent(pair[1]);
 			}
 		}
-		return default || false;
+		return defaultValue || false;
 	}
 	var return_to = getQueryParam('return_to', 'pebblejs://close#');
 
