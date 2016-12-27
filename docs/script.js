@@ -1,5 +1,6 @@
 var submitButton = document.getElementById('submit');
 
+/*
 var color = {
 	"HourHandColor": "FF0000",
 	"MinHandColor": "FFFFFF",
@@ -17,8 +18,7 @@ var white = {
 	"MinHandColor": "FFFFFF",
 	"DateColor": "FFFFFF"
 };
-
-var styles = [color, gray, white];
+*/
 
 submitButton.addEventListener('click', function() {
 	var radios = document.getElementsByName('styling');
@@ -31,7 +31,7 @@ submitButton.addEventListener('click', function() {
 		}
 	}
 
-	var settings = styles[ind];
+	var settings = ind;
 
 	function getQueryParam(variable, defaultValue) {
 		var query = location.search.substring(1);
@@ -47,4 +47,6 @@ submitButton.addEventListener('click', function() {
 	var return_to = getQueryParam('return_to', 'pebblejs://close#');
 
 	document.location = return_to + encodeURIComponent(JSON.stringify(settings));
+
+	//window.close();
 });
