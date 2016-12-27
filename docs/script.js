@@ -1,25 +1,5 @@
 var submitButton = document.getElementById('submit');
 
-/*
-var color = {
-	"HourHandColor": "FF0000",
-	"MinHandColor": "FFFFFF",
-	"DateColor": "FFAA00"
-};
-
-var gray = {
-	"HourHandColor": "FF0000",
-	"MinHandColor": "555555",
-	"DateColor": "AAAAAA"
-};
-
-var white = {
-	"HourHandColor": "FFFFFF",
-	"MinHandColor": "FFFFFF",
-	"DateColor": "FFFFFF"
-};
-*/
-
 submitButton.addEventListener('click', function() {
 	var radios = document.getElementsByName('styling');
 	var ind;
