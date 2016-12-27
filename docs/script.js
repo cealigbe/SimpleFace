@@ -1,21 +1,21 @@
 var submitButton = document.getElementById('submit');
 
 var color = {
-	"HourHandColor": "0xFF0000",
-	"MinHandColor": "0xFFFFFF",
-	"DateColor": "0xFFAA00"
+	"HourHandColor": "FF0000",
+	"MinHandColor": "FFFFFF",
+	"DateColor": "FFAA00"
 };
 
 var gray = {
-	"HourHandColor": "0xFF0000",
-	"MinHandColor": "0x555555",
-	"DateColor": "0xAAAAAA"
+	"HourHandColor": "FF0000",
+	"MinHandColor": "555555",
+	"DateColor": "AAAAAA"
 };
 
 var white = {
-	"HourHandColor": "0xFFFFFF",
-	"MinHandColor": "0xFFFFFF",
-	"DateColor": "0xFFFFFF"
+	"HourHandColor": "FFFFFF",
+	"MinHandColor": "FFFFFF",
+	"DateColor": "FFFFFF"
 };
 
 var styles = [color, gray, white];
