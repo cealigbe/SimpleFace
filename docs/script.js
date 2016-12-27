@@ -31,7 +31,7 @@ submitButton.addEventListener('click', function() {
 		}
 	}
 
-	var style = styles[ind];
+	var settings = styles[ind];
 
 	function getQueryParam(variable, defaultValue) {
 		var query = location.search.substring(1);
@@ -46,7 +46,7 @@ submitButton.addEventListener('click', function() {
 	}
 	var return_to = getQueryParam('return_to', 'pebblejs://close#');
 
-	document.location = return_to + encodeURIComponent(JSON.stringify(style));
+	document.location = return_to + encodeURIComponent(JSON.stringify(settings));
 
 	window.close();
 });
