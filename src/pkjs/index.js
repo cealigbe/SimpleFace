@@ -23,11 +23,9 @@ Pebble.addEventListener('webviewclosed', function(e) {
 	});
 	*/
 	
-	localStorage.setItem('settings', settings);
+	window.localStorage.setItem('settings', settings);
 	
 	Pebble.postMessage(settings);
-	
-	console.log(settings);
 });
 
 Pebble.on('message', function(event) {
@@ -38,7 +36,7 @@ Pebble.on('message', function(event) {
 
 function restoreSettings() {
 	// Restore settings from localStorage
-	var settings = JSON.parse(localStorage.getItem('settings'));
+	var settings = JSON.parse(window.localStorage.getItem('settings'));
 	if (settings) {
 		Pebble.postMessage(settings);
 	}
