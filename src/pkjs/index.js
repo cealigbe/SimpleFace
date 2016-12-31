@@ -1,5 +1,5 @@
 Pebble.addEventListener('showConfiguration', function(e) {
-	var url = 'https://cealigbe.github.io/SimpleFace/'
+	var url = 'https://cealigbe.github.io/SimpleFace/';
 	
 	Pebble.openURL(url);
 });
@@ -12,6 +12,7 @@ Pebble.addEventListener('webviewclosed', function(e) {
 	// Return settings from config
 	var settings = JSON.parse(decodeURIComponent(e.response));
 	
+	/*
 	var settingsFlat = {};
 	Object.keys(settings).forEach(function(key) {
 		if (typeof settings[key] === 'object' && settings[key]) {
@@ -20,8 +21,13 @@ Pebble.addEventListener('webviewclosed', function(e) {
 			settingsFlat[key] = settings[key];
 		}
 	});
+	*/
 	
-	Pebble.postMessage(settingsFlat);
+	localStorage.setItem('settings', settings);
+	
+	Pebble.postMessage(settings);
+	
+	console.log(settings);
 });
 
 Pebble.on('message', function(event) {

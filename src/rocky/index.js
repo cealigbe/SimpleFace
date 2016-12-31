@@ -6,29 +6,6 @@ function fractorad(fraction) {
 	return fraction * 2 * Math.PI;
 }
 
-function drawTicks(ctx, cx, cy, count, inner, outer, color, weight) {
-	var div = (1/count) * 2 * Math.PI;
-	
-	ctx.lineWidth = weight;
-	ctx.strokeStyle = color;
-	
-	for(var i = 0; i < count; i++) {
-		var angle = div * i;
-		var ix = cx + Math.sin(angle) * inner;
-		var iy = cx + Math.cos(angle) * inner;
-		var ox = cx + Math.sin(angle) * outer;
-		var oy = cx + Math.cos(angle) * outer;
-		
-		ctx.beginPath();
-		
-		ctx.moveTo(ix, iy);
-		ctx.lineTo(ox, oy);
-		
-		ctx.stroke();
-	}
-	
-}
-
 function drawHand(ctx, cx, cy, angle, length, color, weight) {
 	// Endpoints
 	var x2 = cx + Math.sin(angle) * length;
@@ -68,15 +45,28 @@ rocky.on('draw', function(event) {
 	var hourColor = "red";
 	var minColor = "white";
 	var dateColor = "lightsalmon";
-	var topMark = true;
 	
-	if (settings) {
-		hourColor = cssColor(settings.HourHandColor);
-		minColor = cssColor(settings.MinHandColor);
-		dateColor = cssColor(settings.DateColor);
+	var ind;
+	
+	if (settings) {	
+		ind = parseInt(settings);
 	}
 	
-	if (topMark) {
+	if (ind === 0) {
+		hourColor = "red";
+		minColor = "white";
+		dateColor = "lightsalmon";
+	} else if (ind == 1) {
+		hourColor = "darkgray";
+		minColor = "white";
+		dateColor = "lightgray";
+	} else if (ind == 2) {
+		hourColor = "white";
+		minColor = "white";
+		dateColor = "white";
+	}
+	
+	if (true) {
 		ctx.fillStyle = "dimgray";
 		ctx.rockyFillRadial(cx, cy-70, 0, 3, 0, 2 * Math.PI);
 	}
