@@ -1,6 +1,6 @@
 body {
 	color: #333;
-	font-family: "Pt Sans", "Helvetica", Arial, sans-serif;
+	font-family: "Work Sans", "Helvetica", Arial, sans-serif;
 	font-size: 18px;
 }
 
@@ -27,15 +27,16 @@ label {
 }
 
 #form label {
+	color: #fff;
 	width: 300px;
 	font-size: 1.25em;
-	background-color: #ccc;
+	background-color: #09f;
 	border-radius: 4px;
 	text-align: center;
 }
 
 #form label:hover {
-	background-color: #999;
+	background-color: #3cf;
 }
 
 #form input[type="radio"] {
@@ -43,21 +44,22 @@ label {
 }
 
 #form input[type="radio"]:checked ~ label {
-	background-color: #999;
+	background-color: #3cf;
 }
 
 #form input[type="submit"] {
 	background-color: #fff;
 	width: 300px;
 	font-size: 1.25em;
-	font-family: "Pt Sans", "Helvetica", Arial, sans-serif;
+	font-family: "Work Sans", "Helvetica", Arial, sans-serif;
 	line-height: 1.5em;
 	border: none;
-	border: solid 1px #666;
+	border: solid 1px #06f;
 	border-radius: 4px;
 }
 
 #form input[type="submit"]:hover {
-	background-color: #ccc;
+	background-color: #09f;
+	color: #fff;
 }
 
